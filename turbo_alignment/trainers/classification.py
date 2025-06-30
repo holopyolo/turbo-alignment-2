@@ -26,10 +26,10 @@ def compute_clf_metrics(eval_pred: EvalPrediction) -> dict[str, float]:
     predictions = np.argmax(pred_scores, axis=1)
     accuracy = accuracy_score(labels, predictions)
     balanced_accuracy = balanced_accuracy_score(labels, predictions)
-    f_score = f1_score(labels, predictions, average='weighted')
-    precision = precision_score(labels, predictions, average='weighted')
-    recall = recall_score(labels, predictions, average='weighted')
-    roc_auc = roc_auc_score(labels, pred_scores[:, 1], average='macro', multi_class='ovo')
+    f_score = f1_score(labels, predictions)
+    precision = precision_score(labels, predictions)
+    recall = recall_score(labels, predictions)
+    roc_auc = roc_auc_score(labels, pred_scores[:, 1])
     metrics = {
         'accuracy': accuracy,
         'balanced_accuracy': balanced_accuracy,
